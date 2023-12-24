@@ -28,4 +28,4 @@
 
 terraform.rc
 
-*.tfstate*
+**.tfstate*

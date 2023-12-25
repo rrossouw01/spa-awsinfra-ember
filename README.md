@@ -1,3 +1,15 @@
+
+>NOTE: for javascript apps that typically handling routing internally serving out of s3 (static) you do need CloudFront
+in front of the bucket.  as well as some kind of way to route static paths back into the app routing.  this example utilize the trick of redirecting 403/404 errors in CloudFront back into the index.html(containign the javascript) of the app.
+
+I have not tried doing the rewrites with Lambda Edge which seems a possible better option than catching 404's.
+- https://medium.com/@juniaporto/how-to-rewrite-requests-on-a-s3-cloudfront-website-e312a1cc9a78
+
+Or instead of Lambda@Edge can CloudFront functions handle it?
+- https://dev.to/aws-builders/use-aws-cloudfront-functions-for-uri-rewrites-587d
+- https://github.com/aws-samples/amazon-cloudfront-functions/blob/main/url-rewrite-single-page-apps/README.md
+
+### Terraform code used for my test
 - https://chrisguitarguy.com/2023/05/17/hosting-a-single-page-application-in-aws/
 
 
@@ -91,5 +103,5 @@ real:
 
 https://spa-app.ls-al.com
 
->since I am working on a SPA ember js app I just deployed here also to test functionality
+>since I am already working on a SPA ember js app I just deployed here also to test functionality
  see:  /home/rrosso/ember-test/upmon-ember/deploy-s3.sh

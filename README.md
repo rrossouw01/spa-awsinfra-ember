@@ -1,3 +1,4 @@
+# javascript spa app s3/cf/emberjs
 
 >NOTE: for javascript apps that typically handling routing internally serving out of s3 (static) you do need CloudFront
 in front of the bucket.  as well as some kind of way to route static paths back into the app routing.  this example utilize the trick of redirecting 403/404 errors in CloudFront back into the index.html(containign the javascript) of the app.

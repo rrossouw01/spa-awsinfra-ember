@@ -1,7 +1,7 @@
 # javascript spa app s3/cf/emberjs
 
->NOTE: for javascript apps that typically handling routing internally serving out of s3 (static) you do need CloudFront
-in front of the bucket.  as well as some kind of way to route static paths back into the app routing.  this example utilize the trick of redirecting 403/404 errors in CloudFront back into the index.html(containign the javascript) of the app.
+>NOTE: for javascript apps that typically handle routing internally and serving out of s3 (static) you need CloudFront
+in front of the bucket.  As well as some kind of way to route static paths back into the app routing.  This example (terraform) utilize the trick of redirecting 403/404 errors in CloudFront back into the index.html(containing the javascript) of the app.
 
 I have not tried doing the rewrites with Lambda Edge which seems a possible better option than catching 404's.
 - https://medium.com/@juniaporto/how-to-rewrite-requests-on-a-s3-cloudfront-website-e312a1cc9a78
@@ -18,46 +18,51 @@ Or instead of Lambda@Edge can CloudFront functions handle it?
 /TANK/DATA/MyWorkDocs/iqonda/POC/spa-awsinfra-ember/tf
 
 
-desktop01 ❯ …/MyWorkDocs/iqonda/POC/terraform-aws-spa 
-❯❯ terraform apply
-...
-aws_route53_record.spa: Creating...
-aws_route53_record.spa: Still creating... [10s elapsed]
-aws_route53_record.spa: Still creating... [20s elapsed]
-aws_route53_record.spa: Still creating... [30s elapsed]
-aws_route53_record.spa: Still creating... [40s elapsed]
-aws_route53_record.spa: Creation complete after 47s [id=Z08387472ACI9OYLRW9TF_spa-app.ls-al.com_A]
+    desktop01 ❯ …/MyWorkDocs/iqonda/POC/terraform-aws-spa 
+    ❯❯ terraform apply
+    ...
+    aws_route53_record.spa: Creating...
+    aws_route53_record.spa: Still creating... [10s elapsed]
+    aws_route53_record.spa: Still creating... [20s elapsed]
+    aws_route53_record.spa: Still creating... [30s elapsed]
+    aws_route53_record.spa: Still creating... [40s elapsed]
+    aws_route53_record.spa: Creation complete after 47s [id=Z08387472ACI9OYLRW9TF_spa-app.ls-al.com_A]
 
-Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
 
-Outputs:
+    Outputs:
 
-account_id = "660032875792"
-desktop01 ❯ …/MyWorkDocs/iqonda/POC/terraform-aws-spa took 15m23s 
+    account_id = "660032875792"
+    desktop01 ❯ …/MyWorkDocs/iqonda/POC/terraform-aws-spa took 15m23s 
 
-
+### some manual things I did(supposed to work form terraform?)
 - added CNAME validation records for new cert
 - added DNS entry point to CF
-- uploaded index.html to bucket
-
-❯❯ curl https://spa-app.ls-al.com
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-<h1>Heading</h1>
-<p>fake home page ....</p>
-</body>
-</html>
 
 
-### copy existing ember js test to this s3/cf stack
+### quick test
+copy a little index.html to bucket
 
-npm run build
+    ❯❯ curl https://spa-app.ls-al.com
+    <!DOCTYPE html>
+    <html>
+    <head>
+    </head>
+    <body>
+
+    <h1>Heading</h1>
+    <p>fake home page ....</p>
+    </body>
+    </html>
+
+
+### copy an existing ember js app to this s3/cf stack
+
+
  
 example: 
+    # npm run build
+
     # sync versioned asset files to s3
     aws s3 sync dist/assets/ s3://example-spa-app/assets/
     
@@ -73,9 +78,9 @@ example:
         --distribution-id "$CLOUDFRONT_DISTRIBUTION" \
         --paths "/index.html"
 
-real:
+>NOTE: since I am already working on a SPA ember js app I just deployed it here also to test functionality
 
-    desktop01 ❯ ~/ember-test/upmon-ember on  master 
+my app copy:
     ❯❯ aws s3 sync dist/assets s3://poc-spa-app/assets/
     ...
 
@@ -102,7 +107,4 @@ real:
     }
 
 
-https://spa-app.ls-al.com
-
->since I am already working on a SPA ember js app I just deployed here also to test functionality
- see:  /home/rrosso/ember-test/upmon-ember/deploy-s3.sh
+site: https://spa-app.ls-al.com

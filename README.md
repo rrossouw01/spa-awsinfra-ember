@@ -5,27 +5,29 @@ in front of the bucket.  As well as some kind of way to route static paths back 
 
 ### blocks
 1. frontend application (spa-app)
+   - ember framework
+>NOTE: change this example app to be more generic with new API endpoint/DDB 
 
 2. frontend infrastructure (frontend-infra-tf)
-    data.aws_caller_identity.current
-    data.aws_iam_policy_document.spa
-    aws_acm_certificate.spa
-    aws_acm_certificate_validation.spa
-    aws_cloudfront_cache_policy.spa
-    aws_cloudfront_cache_policy.spa-with-cors
-    aws_cloudfront_distribution.spa
-    aws_cloudfront_origin_access_identity.spa
-    aws_route53_record.spa
-    aws_route53_record.spa-certificate["*.spa-app.ls-al.com"]
-    aws_route53_record.spa-certificate["spa-app.ls-al.com"]
-    aws_route53_zone.spa
-    aws_s3_bucket.spa
-    aws_s3_bucket_cors_configuration.spa
-    aws_s3_bucket_policy.spa
+   - data.aws_caller_identity.current
+   - data.aws_iam_policy_document.spa
+   - aws_acm_certificate.spa
+   - aws_acm_certificate_validation.spa
+   - aws_cloudfront_cache_policy.spa
+   - aws_cloudfront_cache_policy.spa-with-cors
+   - aws_cloudfront_distribution.spa
+   - aws_cloudfront_origin_access_identity.spa
+   - aws_route53_record.spa
+   - aws_route53_record.spa-certificate["*.spa-app.ls-al.com"]
+   - aws_route53_record.spa-certificate["spa-app.ls-al.com"]
+   - aws_route53_zone.spa
+   - aws_s3_bucket.spa
+   - aws_s3_bucket_cors_configuration.spa
+   - aws_s3_bucket_policy.spa
 
 3. backend infrastructure (backend-infra-tf)
-    api gateway endpoints
-    ddb tables
+   - api gateway endpoints
+   - ddb tables
 
 
 ### TODO

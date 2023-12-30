@@ -3,6 +3,33 @@
 >NOTE: for javascript apps that typically handle routing internally and serving out of s3 (static) you need CloudFront
 in front of the bucket.  As well as some kind of way to route static paths back into the app routing.  This example (terraform) utilize the trick of redirecting 403/404 errors in CloudFront back into the index.html(containing the javascript) of the app.
 
+### blocks
+1. frontend application (spa-app)
+
+2. frontend infrastructure (frontend-infra-tf)
+    data.aws_caller_identity.current
+    data.aws_iam_policy_document.spa
+    aws_acm_certificate.spa
+    aws_acm_certificate_validation.spa
+    aws_cloudfront_cache_policy.spa
+    aws_cloudfront_cache_policy.spa-with-cors
+    aws_cloudfront_distribution.spa
+    aws_cloudfront_origin_access_identity.spa
+    aws_route53_record.spa
+    aws_route53_record.spa-certificate["*.spa-app.ls-al.com"]
+    aws_route53_record.spa-certificate["spa-app.ls-al.com"]
+    aws_route53_zone.spa
+    aws_s3_bucket.spa
+    aws_s3_bucket_cors_configuration.spa
+    aws_s3_bucket_policy.spa
+
+3. backend infrastructure (backend-infra-tf)
+    api gateway endpoints
+    ddb tables
+
+
+### TODO
+
 I have not tried doing the rewrites with Lambda Edge which seems a possible better option than catching 404's.
 - https://medium.com/@juniaporto/how-to-rewrite-requests-on-a-s3-cloudfront-website-e312a1cc9a78
 
@@ -15,7 +42,7 @@ Or instead of Lambda@Edge can CloudFront functions handle it?
 
 
 ### folder and cloned repo
-/TANK/DATA/MyWorkDocs/iqonda/POC/spa-awsinfra-ember/tf
+/TANK/DATA/MyWorkDocs/iqonda/POC/spa-awsinfra-ember/frontend-infra-tf
 
 
     desktop01 ❯ …/MyWorkDocs/iqonda/POC/terraform-aws-spa 
@@ -57,10 +84,9 @@ copy a little index.html to bucket
 
 
 ### copy an existing ember js app to this s3/cf stack
+>NOTE: change this example app to be more generic with new API endpoint/DDB 
 
-
- 
-example: 
+example pattern: 
     # npm run build
 
     # sync versioned asset files to s3

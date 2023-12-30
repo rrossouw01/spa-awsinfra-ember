@@ -15,13 +15,14 @@
                     "lat": {"S": "37.7749"},
                     "lng": {"S": "-122.4194"}
                     }
-                  }
+                  },
+                  "category": {"S": "Estate"},
+                  "bedrooms": {"S": "15"},
+                  "image": {"S": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg"},
+                  "description": {"S": "This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests."}
+                  
                 }
-              },
-                "category": {"S": "Estate"},
-                "bedrooms": {"S": "15"},
-                "image": {"S": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg"},
-                "description": {"S": "This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests."}
+              } 
               }
           }
       },
@@ -40,13 +41,13 @@
                     "lat": {"S": "47.6062"},
                     "lng": {"S": "-122.3321"}
                     }
-                  }
-                }
-                },
+                  },   
                  "category": {"S": "Condo"},
                  "bedrooms": {"S": "1"},
                  "image": {"S": "https://upload.wikimedia.org/wikipedia/commons/2/20/Seattle_-_Barnes_and_Bell_Buildings.jpg"},
                  "description": {"S": "A commuters dream. This rental is within walking distance of 2 bus stops and the Metro."}
+                }
+                }
               }
           }
       },
@@ -65,13 +66,14 @@
                   "lat": {"S": "45.5175"},
                   "lng": {"S": "-122.6801"}
                   }
-                }
+                },
+                "category": {"S": "Apartment"},
+                "bedrooms": {"S": "3"},
+                "image": {"S": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg"},
+                "description": {"S": "Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet."}
+                
               }
-              },
-              "category": {"S": "Apartment"},
-              "bedrooms": {"S": "3"},
-              "image": {"S": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg"},
-              "description": {"S": "Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet."}
+              }
             }
           }
       }                    

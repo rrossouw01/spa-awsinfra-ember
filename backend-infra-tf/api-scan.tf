@@ -69,7 +69,20 @@ resource "aws_api_gateway_integration_response" "rentals-response" {
 #foreach($elem in $inputRoot.Items)
     {
       "id": "$elem.id.S",
-      "type": "$elem.type.S"
+      "type": "$elem.type.S",
+      "attributes": {
+        "bedroooms": "$elem.attributes.M.bedrooms.S",
+        "category": "$elem.attributes.M.category.S",
+        "city": "$elem.attributes.M.city.S",
+        "description": "$elem.attributes.M.description.S",
+        "image": "$elem.attributes.M.image.S",
+        "owner": "$elem.attributes.M.owner.S",
+        "title": "$elem.attributes.M.title.S",
+        "location": {
+          "lat": "$elem.attributes.M.location.M.lat.S",
+          "lng": "$elem.attributes.M.location.M.lng.S"
+        }
+      }
     }#if($foreach.hasNext),#end
 		
 #end

@@ -39,6 +39,10 @@ Or instead of Lambda@Edge can CloudFront functions handle it?
 - https://dev.to/aws-builders/use-aws-cloudfront-functions-for-uri-rewrites-587d
 - https://github.com/aws-samples/amazon-cloudfront-functions/blob/main/url-rewrite-single-page-apps/README.md
 
+Authentication
+https://ember-simple-auth.com/
+https://demo.ember-simple-auth.com/
+
 ### Terraform code used for my test
 - https://chrisguitarguy.com/2023/05/17/hosting-a-single-page-application-in-aws/
 

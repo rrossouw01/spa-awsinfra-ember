@@ -3,6 +3,11 @@ resource "aws_api_gateway_rest_api" "spaApi" {
   #  provider    = aws.usergroup
   name        = "poc-spa-api"
   description = "poc api"
+  
+  # could also use Edge for production depending on our use case
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 }
 
 

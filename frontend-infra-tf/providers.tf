@@ -16,6 +16,7 @@ provider "aws" {
       Project     = "aws-spa-app"
       environment = "POC"
       Owner       = "rr"
+      iac-source   = "terraform in /TANK/DATA/MyWorkDocs/iqonda/POC/spa-awsinfra-ember"
     }
   }
 }
